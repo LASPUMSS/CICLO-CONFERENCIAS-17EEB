@@ -1,0 +1,18 @@
+
+Descripcion de la base de datos del precio de las viviendas en Boston:
+
+crim: Tasa de criminalidad por pueblo.
+zn: proporción de tierra residencial parcelada en lotes de mas de 25,000 pies cuadrados
+indus: Proporción de negocios que derivan menos de 10% de sus ingresos por ventas al público por pueblo.
+chas: Dummy variable para el río Charles (1 si sigue el río, 0 si no)
+nox: Concentración de oxidos nítricos (partes por 10 millones).
+rm: Número promedio de cuartos por vivienda.
+age: proporción de unidades residenciales propias construirdas antes de 1940.
+dis: Distancias ponderadas a los cinco centros de empleo de Boston.
+rad: Índice de accesibilidad a las autopistas.
+tax: Tasa impostivia a la propiedad de vivienda por $10.000
+ptratio: razón alumnos a maestro por pueblo.
+black: 1.000(Bk-0.63)^2, siendo Br la proporción de habitantes afrodescendientes por pueblo.
+lstat: Porcentaje de la población de bajos recursos.
+medv: Valor mediano de las viviendas ocupadas por sus dueños (en miles de dólares).
+
