@@ -12,10 +12,10 @@
 rm(list = ls())
 
 # Cargar librerias necesarias para estimacion
-set.seed(123)    
+set.seed(123)
 library(glmnet)  # clave para implementar Ridge
-library(dplyr)   
-library(psych)   
+library(dplyr)
+library(psych)
 library(data.table)
 library(ggplot2)
 library(ggfortify)
@@ -23,8 +23,8 @@ library(caret)
 
 
 #-> Se alistan las variables explicativas
-setwd("D:/Dropbox/BR/Depto_Macro/Cursos/Banco Central de Bolivia/Códigos/Proyecciones lineales de alta dimensionalidad")
-gdp.hf <- fread('us_gdp_monthly_ch12_sec6.csv',
+# setwd("D:/Dropbox/BR/Depto_Macro/Cursos/Banco Central de Bolivia/Códigos/Proyecciones lineales de alta dimensionalidad")
+gdp.hf <- fread('Proyecciones lineales de alta dimensionalidad/us_gdp_monthly_ch12_sec6.csv',
                 select = c('date', 'coinc_indicators_index', 'employees', 'ind_prod', 'pers_inc', 'sales'))
 gdp.hf[, date := as.Date(date, format = '%m/%d/%Y')]
 gdp.hf[, qtr := rep(1:112, each = 3)]
@@ -34,7 +34,7 @@ gdp.hf[, c('CI', 'E', 'IP', 'INC', 'SA') :=
 gdp.xs = unique(gdp.hf[date <= '2012-12-01' & date >= '1985-04-01', .(date, CI, E, IP, INC, SA)])
 
 #-> Se alista la variable explicada
-gdp.lf = fread('usgdp_qtr_ch13_sec6.csv')
+gdp.lf = fread('Proyecciones lineales de alta dimensionalidad/usgdp_qtr_ch13_sec6.csv')
 gdp.lf[, date := as.Date(date, format = '%m/%d/%Y')]
 
 gdp = unique(gdp.lf[date <= '2012-10-01', .(date, gdp)])
@@ -113,7 +113,7 @@ plot(log(lambdas_to_try), aic, col = "orange", type = "l",
 lines(log(lambdas_to_try), bic, col = "skyblue3")
 legend("bottomleft", lwd = 1, col = c("orange", "skyblue3"), legend = c("AIC", "BIC"))
 
-#--> Se hallan los \lambdas optimos, segun ambos criterios 
+#--> Se hallan los \lambdas optimos, segun ambos criterios
 lambda_aic = lambdas_to_try[which.min(aic)]
 lambda_bic = lambdas_to_try[which.min(bic)]
 
